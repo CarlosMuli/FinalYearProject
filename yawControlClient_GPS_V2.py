@@ -67,9 +67,9 @@ def set_yaw_angle(vehicle, is_relative, heading, yaw_speed, direction):
 
 def follow_detection(instruction):
     if instruction == 'Left':
-        set_yaw_angle(vehicle, 1, 2, 1, -1)
+        set_yaw_angle(vehicle, 1, 1, 0, -1)
     if instruction == 'Right':
-        set_yaw_angle(vehicle, 1, 2, 1, 1)
+        set_yaw_angle(vehicle, 1, 1, 0, 1)
     
     
 # Main Function
@@ -87,9 +87,12 @@ print('Attempting Connection')
 clientSocket.connect((hostIP,port))
 print('Connection Successful')
 
+gnd_speed = 5
+
 arm_and_takeoff(args["altitude"])
 
 if clientSocket: 
+    set_velocity_body(vehicle, gnd_speed, 0, 0)
     while(vid.isOpened()):
         img, frame = vid.read()
         frame = imutils.resize(frame,width=320)
