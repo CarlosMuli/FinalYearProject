@@ -75,7 +75,7 @@ def follow_detection(instruction):
 # Main Function
 #-- Connect to the vehicle
 print('Connecting...')
-vehicle = connect('udp:127.0.0.1:14550',baud=115200,waitready=True)
+vehicle = connect('udp:127.0.0.1:14550',baud=115200,wait_ready=True)
 
 vid = cv2.VideoCapture(0)
 print('Capturing Video')
